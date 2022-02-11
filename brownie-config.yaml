@@ -1,0 +1,19 @@
+dependencies:
+  # - <organisation/repo>@<version>
+  - smartcontractkit/chainlink-brownie-contracts@1.1.1
+# we need compiler to tell the chainlink witch dependenciy to use
+compiler:
+  solc:
+    remappings:
+      # in this line we are saying, when ever you see (@chainlink) in the import, please grab it from the right dependency above
+      "@chainlink=smartcontractkit/chainlink-brownie-contracts@1.1.1"
+networks:
+  rinkeby:
+    eth_usd_price_feed: "0x8A753747A1Fa494EC906cE90E9f37563A8AF630e"
+    verify: True
+  mainnet-fork-dev:
+    eth_usd_price_feed: "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419"
+    verify: False
+dotenv: ".env"
+wallets:
+  from_key: ${PRIVATE_KEY}
